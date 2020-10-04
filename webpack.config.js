@@ -1,18 +1,17 @@
 const path = require("path");
 
-const Path = {
-  SRC: './src/',
-  PUB: path.resolve(__dirname, 'public')
-}
+const SRC = './src/';
+const PUB = path.resolve(__dirname, 'public');
 
 module.exports = {
-  entry: Path.SRC + 'index.js',
+  entry: SRC + 'index.js',
   output: {
     filename: 'bundle.js',
-    path: Path.PUB
+    path: PUB
   },
   devServer: {
-    contentBase: Path.PUB
+    contentBase: PUB,
+    historyApiFallback: true
   },
   devtool: 'source-map',
   resolve: {
