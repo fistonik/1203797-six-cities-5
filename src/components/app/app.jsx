@@ -5,26 +5,47 @@ import Main from "../main/main";
 import AuthScreen from "../auth-screen/auth-screen";
 import FavoritesScreen from "../favorites-screen/favorites-screen";
 import OfferScreen from "../offer-screen/offer-screen";
+import {offersPropTypes, reviewsPropTypes} from "../../propTypes";
 
 const App = (props) => {
-  const {countOffers} = props;
+  const {countOffers, offers, reviews} = props;
 
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/">
-          <Main
-            countOffers={countOffers}
-          />
+        <Route exact
+          path="/"
+          render={({history}) => (
+            <Main
+              countOffers={countOffers}
+              offers={offers}
+              className="cities"
+              onClickCard={() => history.push(`/offer`)}
+            />
+          )}>
         </Route>
         <Route exact path="/login">
           <AuthScreen/>
         </Route>
-        <Route exact path="/favorites">
-          <FavoritesScreen/>
+        <Route exact
+          path="/favorites"
+          render={({history}) => (
+            <FavoritesScreen
+              offers={offers}
+              className="favorites"
+              onClickCard={() => history.push(`/offer`)}
+            />
+          )}>
         </Route>
-        <Route exact path="/offer/:id?">
-          <OfferScreen/>
+        <Route exact
+          path="/offer/:id?"
+          render={({history}) => (
+            <OfferScreen
+              offers={offers}
+              reviews={reviews}
+              onClickCard={() => history.push(`/offer`)}
+            />
+          )}>
         </Route>
       </Switch>
     </BrowserRouter>
@@ -32,7 +53,13 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  countOffers: PropTypes.number.isRequired
+  countOffers: PropTypes.number.isRequired,
+  offers: PropTypes.arrayOf(
+      PropTypes.shape(offersPropTypes).isRequired
+  ).isRequired,
+  reviews: PropTypes.arrayOf(
+      PropTypes.shape(reviewsPropTypes).isRequired
+  ).isRequired
 };
 
 export default App;
