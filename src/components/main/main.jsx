@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import OfferList from "../offer-list/offer-list";
 import {offersPropTypes} from "../../propTypes";
 import Header from "../header/header";
+import Map from "../map/map";
 
 const Main = (props) => {
   const {countOffers, offers, className, onClickCard} = props;
@@ -24,7 +25,9 @@ const Main = (props) => {
               />
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map
+                offers={offers}
+              />
             </div>
           </div>
         </div>
