@@ -26,6 +26,8 @@ const OfferScreen = (props) => {
     avatar
   } = offers[3].owner;
 
+  const raitingPercent = raiting / 5 * 100;
+
   return (
     <div className="page">
       <Header/>
@@ -60,7 +62,7 @@ const OfferScreen = (props) => {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{width: `${raiting / 5 * 100}%`}}></span>
+                  <span style={{width: `${raitingPercent}%`}}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="property__rating-value rating__value">{raiting}</span>

@@ -10,23 +10,29 @@ class OfferList extends PureComponent {
     this.state = {
       activeCard: false
     };
+
+    this.onHoverOffer = this.onHoverOffer.bind(this);
   }
+
+  onHoverOffer(activeCard) {
+    this.setState({
+      activeCard
+    });
+  }
+
   render() {
     const {offers, className, onClickCard} = this.props;
-    const onHoverOffer = (id) => {
-      this.setState({
-        activeCard: id
-      });
-    };
+
+    const classNameList = `${className}__${className === `near-places` ? `list` : `places`}${className === `cities` ? `-list` : ``}`;
 
     return (
-      <div className={`${className}__${className === `near-places` ? `list` : `places`}${className === `cities` ? `-list` : ``}`}>
+      <div className={classNameList}>
         {offers.map((offer) => (
           <OfferCard
             key={offer.id}
             offer={offer}
             className={className}
-            onHoverOffer={onHoverOffer}
+            onHoverOffer={this.onHoverOffer}
             onClickCard={onClickCard}
           />
         ))}

@@ -16,9 +16,13 @@ const OfferCard = (props) => {
 
   const {onHoverOffer, className, onClickCard} = props;
 
+  const classNameCard = `${className}__${className === `cities` ? `place-` : ``}card place-card`;
+
+  const raitingPercent = raiting / 5 * 100;
+
   return (
     <article
-      className={`${className}__${className === `cities` ? `place-` : ``}card place-card`}
+      className={classNameCard}
       onMouseEnter={() => onHoverOffer(id)}
       onClick={() => onClickCard()}
     >
@@ -47,7 +51,7 @@ const OfferCard = (props) => {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `${raiting / 5 * 100}%`}}></span>
+            <span style={{width: `${raitingPercent}%`}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
