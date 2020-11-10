@@ -4,6 +4,13 @@ import {offersPropTypes} from "../../propTypes";
 import leaflet from "leaflet";
 import "leaflet/dist/leaflet.css";
 
+const MAP_ZOOM = 12;
+const AMSTERDAM = [52.38333, 4.9];
+const PIN = {
+  SRC: `img/pin.svg`,
+  SIZE: [30, 30]
+};
+
 class Map extends PureComponent {
   constructor(props) {
     super(props);
@@ -14,16 +21,15 @@ class Map extends PureComponent {
   }
 
   _initMap() {
-    const city = [52.38333, 4.9];
-    const zoom = 12;
+    const city = AMSTERDAM;
     const map = leaflet.map(`map`, {
       center: city,
-      zoom,
+      zoom: MAP_ZOOM,
       zoomControl: false,
       marker: true
     });
 
-    map.setView(city, zoom);
+    map.setView(city, MAP_ZOOM);
 
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
@@ -38,8 +44,8 @@ class Map extends PureComponent {
     const {offers} = this.props;
 
     const icon = leaflet.icon({
-      iconUrl: `img/pin.svg`,
-      iconSize: [30, 30]
+      iconUrl: PIN.SRC,
+      iconSize: PIN.SIZE
     });
 
     offers.forEach((element) => {
