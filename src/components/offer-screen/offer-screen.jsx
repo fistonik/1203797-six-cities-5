@@ -4,6 +4,7 @@ import {offersPropTypes, reviewsPropTypes} from "../../propTypes";
 import Reviews from "../reviews/reviews";
 import OfferList from "../offer-list/offer-list";
 import Header from "../header/header";
+import Map from "../map/map";
 
 const OfferScreen = (props) => {
   const {reviews, offers, onClickCard} = props;
@@ -27,6 +28,8 @@ const OfferScreen = (props) => {
   } = offers[3].owner;
 
   const raitingPercent = raiting / 5 * 100;
+
+  const offersNearby = offers.slice(0, 3);
 
   return (
     <div className="page">
@@ -113,13 +116,16 @@ const OfferScreen = (props) => {
               />
             </div>
           </div>
-          <section className="property__map map"></section>
+          <Map
+            offers={offersNearby}
+            className="property"
+          />
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <OfferList
-              offers={offers.slice(0, 3)}
+              offers={offersNearby}
               className="near-places"
               onClickCard={onClickCard}
             />

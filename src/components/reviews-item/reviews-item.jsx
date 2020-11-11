@@ -7,7 +7,17 @@ const ReviewsItem = (props) => {
     user,
     text,
     raiting,
+    date
   } = props.review;
+
+  const raitingPercent = raiting / 5 * 100;
+
+  const dateString = new Date(date)
+    .toLocaleDateString(`en-US`, {
+      day: `numeric`,
+      month: `long`,
+      year: `numeric`
+    });
 
   return (
     <li className="reviews__item">
@@ -22,14 +32,14 @@ const ReviewsItem = (props) => {
       <div className="reviews__info">
         <div className="reviews__rating rating">
           <div className="reviews__stars rating__stars">
-            <span style={{width: `${raiting / 5 * 100}%`}}></span>
+            <span style={{width: `${raitingPercent}%`}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <p className="reviews__text">
           {text}
         </p>
-        <time className="reviews__time" dateTime="2019-04-24">April 2019</time>
+        <time className="reviews__time" dateTime="2019-04-24">{dateString}</time>
       </div>
     </li>
   );
