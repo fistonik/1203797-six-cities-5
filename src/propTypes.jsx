@@ -18,7 +18,14 @@ const offersPropTypes = {
     avatar: PropTypes.string.isRequired,
     isPro: PropTypes.bool.isRequired
   }).isRequired,
-  inside: PropTypes.array.isRequired
+  inside: PropTypes.array.isRequired,
+  city: PropTypes.shape({
+    location: PropTypes.shape({
+      lat: PropTypes.number.isRequired,
+      lng: PropTypes.number.isRequired
+    }).isRequired,
+    name: PropTypes.string.isRequired
+  }).isRequired
 };
 
 const reviewsPropTypes = {

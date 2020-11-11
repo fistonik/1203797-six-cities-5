@@ -24,7 +24,14 @@ export default [
       avatar: `/img/avatar-angelina.jpg`,
       isPro: true,
     },
-    inside: [`Wi-Fi`, `Baby seat`, `Dishwasher`, `Washing machine`]
+    inside: [`Wi-Fi`, `Baby seat`, `Dishwasher`, `Washing machine`],
+    city: {
+      location: {
+        lat: 52.3909553943508,
+        lng: 4.85309666406198,
+      },
+      name: `Amsterdam`
+    }
   },
   {
     id: 2,
@@ -44,7 +51,14 @@ export default [
       avatar: `/img/avatar-angelina.jpg`,
       isPro: false,
     },
-    inside: [`Wi-Fi`, `Kitchen`, `Fridge`, `Washing machine`]
+    inside: [`Wi-Fi`, `Kitchen`, `Fridge`, `Washing machine`],
+    city: {
+      location: {
+        lat: 52.369553943508,
+        lng: 4.85309666406198,
+      },
+      name: `Amsterdam`
+    }
   },
   {
     id: 3,
@@ -64,7 +78,14 @@ export default [
       avatar: `/img/avatar-angelina.jpg`,
       isPro: true,
     },
-    inside: [`Wi-Fi`, `Towels`, `Baby seat`, `Dishwasher`, `Washing machine`]
+    inside: [`Wi-Fi`, `Towels`, `Baby seat`, `Dishwasher`, `Washing machine`],
+    city: {
+      location: {
+        lat: 52.3909553943508,
+        lng: 4.929309666406198,
+      },
+      name: `Amsterdam`
+    }
   },
   {
     id: 4,
@@ -84,6 +105,13 @@ export default [
       avatar: `/img/avatar-angelina.jpg`,
       isPro: false,
     },
-    inside: [`Wi-Fi`, `Kitchen`, `Fridge`, `Towels`, `Baby seat`, `Dishwasher`, `Washing machine`]
+    inside: [`Wi-Fi`, `Kitchen`, `Fridge`, `Towels`, `Baby seat`, `Dishwasher`, `Washing machine`],
+    city: {
+      location: {
+        lat: 52.3809553943508,
+        lng: 4.939309666406198,
+      },
+      name: `Amsterdam`
+    }
   }
 ];
