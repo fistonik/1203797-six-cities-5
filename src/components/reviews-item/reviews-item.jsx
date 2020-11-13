@@ -12,13 +12,6 @@ const ReviewsItem = (props) => {
 
   const raitingPercent = raiting / 5 * 100;
 
-  const dateString = new Date(date)
-    .toLocaleDateString(`en-US`, {
-      day: `numeric`,
-      month: `long`,
-      year: `numeric`
-    });
-
   return (
     <li className="reviews__item">
       <div className="reviews__user user">
@@ -39,7 +32,7 @@ const ReviewsItem = (props) => {
         <p className="reviews__text">
           {text}
         </p>
-        <time className="reviews__time" dateTime="2019-04-24">{dateString}</time>
+        <time className="reviews__time" dateTime="2019-04-24">{date}</time>
       </div>
     </li>
   );
