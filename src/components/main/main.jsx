@@ -7,18 +7,27 @@ import Header from "../header/header";
 import Map from "../map/map";
 import {connect} from "react-redux";
 import filterOffers from "../../filterOffers";
+import {ActionCreator} from "../../store/action";
 
 const Main = (props) => {
-  const {offers, className, onClickCard, city} = props;
+  const {offers, className, onClickCard, city, setCity} = props;
 
   const offersFiltered = filterOffers(offers, city);
+
+  const onClickCity = (newCity) => (evt) => {
+    evt.preventDefault();
+    setCity(newCity);
+  };
 
   return (
     <div className="page page--gray page--main">
       <Header/>
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
-        <CityList/>
+        <CityList
+          city={city}
+          onClickCity={onClickCity}
+        />
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
@@ -50,7 +59,8 @@ Main.propTypes = {
   ).isRequired,
   className: PropTypes.string.isRequired,
   onClickCard: PropTypes.func.isRequired,
-  city: PropTypes.string.isRequired
+  city: PropTypes.string.isRequired,
+  setCity: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -60,6 +70,11 @@ const mapStateToProps = (state) => {
   };
 };
 
+const mapDispatchToProps = (dispatch) => ({
+  setCity(city) {
+    dispatch(ActionCreator.setCity(city));
+  }
+});
 
 export {Main};
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

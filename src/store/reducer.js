@@ -13,11 +13,6 @@ export const reducer = (state = initialState, action) => {
       return extend(state, {
         city: action.payload
       });
-
-    case ActionType.GET_OFFERS:
-      return extend(state, {
-        offers: {}
-      });
   }
 
   return state;

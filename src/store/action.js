@@ -7,9 +7,5 @@ export const ActionCreator = {
   setCity: (city) => ({
     type: ActionType.SET_CITY,
     payload: city
-  }),
-  getOffers: () => ({
-    type: ActionType.GET_OFFERS,
-    payload: {}
   })
 };
