@@ -13,12 +13,10 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact
-          path="/"
+        <Route exact path="/"
           render={({history}) => (
             <Main
               countOffers={countOffers}
-              offers={offers}
               className="cities"
               onClickCard={() => history.push(`/offer`)}
             />
@@ -27,8 +25,7 @@ const App = (props) => {
         <Route exact path="/login">
           <AuthScreen/>
         </Route>
-        <Route exact
-          path="/favorites"
+        <Route exact path="/favorites"
           render={({history}) => (
             <FavoritesScreen
               offers={offers}
@@ -37,8 +34,7 @@ const App = (props) => {
             />
           )}>
         </Route>
-        <Route exact
-          path="/offer/:id?"
+        <Route exact path="/offer/:id?"
           render={({history}) => (
             <OfferScreen
               offers={offers}
