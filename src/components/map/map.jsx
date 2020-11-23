@@ -8,6 +8,7 @@ const MAP_ZOOM = 12;
 const AMSTERDAM = [52.38333, 4.9];
 const PIN = {
   SRC: `img/pin.svg`,
+  SRC_ACTIVE: `img/pin-active.svg`,
   SIZE: [30, 30]
 };
 
@@ -50,7 +51,7 @@ class Map extends PureComponent {
   }
 
   _addPoint() {
-    const {offers} = this.props;
+    const {offers, activeOffer} = this.props;
 
     const icon = leaflet.icon({
       iconUrl: PIN.SRC,
@@ -60,6 +61,12 @@ class Map extends PureComponent {
     let markers = [];
     offers.forEach((elem) => {
       const marker = leaflet.marker(elem.city.location, {icon});
+      if (elem.id === activeOffer) {
+        marker.setIcon(leaflet.icon({
+          iconUrl: PIN.SRC_ACTIVE,
+          iconSize: PIN.SIZE
+        }));
+      }
       this._markers[elem.id] = marker;
       markers.push(marker);
 
@@ -90,7 +97,8 @@ Map.propTypes = {
   offers: PropTypes.arrayOf(
       PropTypes.shape(offersPropTypes).isRequired
   ).isRequired,
-  className: PropTypes.string.isRequired
+  className: PropTypes.string.isRequired,
+  activeOffer: PropTypes.number
 };
 
 export default Map;
