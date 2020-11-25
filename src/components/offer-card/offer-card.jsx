@@ -14,7 +14,7 @@ const OfferCard = (props) => {
     isFavorite
   } = props.offer;
 
-  const {onHoverOffer, className, onClickCard} = props;
+  const {onHoverOffer, className, onClickCard, onHoverLeaveOffer} = props;
 
   const classNameCard = `${className}__${className === `cities` ? `place-` : ``}card place-card`;
 
@@ -24,6 +24,7 @@ const OfferCard = (props) => {
     <article
       className={classNameCard}
       onMouseEnter={() => onHoverOffer(id)}
+      onMouseLeave={() => onHoverLeaveOffer()}
       onClick={() => onClickCard()}
     >
       {isPremium && (
@@ -68,7 +69,8 @@ OfferCard.propTypes = {
   offer: PropTypes.shape(offersPropTypes).isRequired,
   onHoverOffer: PropTypes.func.isRequired,
   className: PropTypes.string.isRequired,
-  onClickCard: PropTypes.func.isRequired
+  onClickCard: PropTypes.func,
+  onHoverLeaveOffer: PropTypes.func
 };
 
 export default OfferCard;
