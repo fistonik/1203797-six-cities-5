@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import ReviewsItem from "../reviews-item/reviews-item";
 import {reviewsPropTypes} from "../../propTypes";
 import ReviewsForm from "../reviews-form/reviews-form";
+import withReviewsFrom from "../../hocs/with-reviews-from/with-reviews-from";
+
+const ReviewsFromWrapped = withReviewsFrom(ReviewsForm);
 
 const Reviews = (props) => {
   const {
@@ -20,7 +23,7 @@ const Reviews = (props) => {
           />
         ))}
       </ul>
-      <ReviewsForm />
+      <ReviewsFromWrapped />
     </section>
   );
 };
