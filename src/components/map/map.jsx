@@ -98,7 +98,7 @@ Map.propTypes = {
       PropTypes.shape(offersPropTypes).isRequired
   ).isRequired,
   className: PropTypes.string.isRequired,
-  activeOffer: PropTypes.number
+  activeOffer: PropTypes.number.isRequired
 };
 
 export default Map;

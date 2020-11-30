@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {reviewsPropTypes} from "../../propTypes";
+import {raitingToPercent} from "../../utils";
 
 const ReviewsItem = (props) => {
   const {
@@ -9,8 +10,6 @@ const ReviewsItem = (props) => {
     raiting,
     date
   } = props.review;
-
-  const raitingPercent = raiting / 5 * 100;
 
   return (
     <li className="reviews__item">
@@ -25,7 +24,7 @@ const ReviewsItem = (props) => {
       <div className="reviews__info">
         <div className="reviews__rating rating">
           <div className="reviews__stars rating__stars">
-            <span style={{width: `${raitingPercent}%`}}></span>
+            <span style={{width: `${raitingToPercent(raiting)}%`}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

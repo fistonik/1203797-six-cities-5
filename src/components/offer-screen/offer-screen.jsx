@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {offersPropTypes, reviewsPropTypes} from "../../propTypes";
+import {raitingToPercent} from "../../utils";
 import Reviews from "../reviews/reviews";
 import OfferList from "../offer-list/offer-list";
 import Header from "../header/header";
@@ -9,7 +10,10 @@ import Map from "../map/map";
 const OfferScreen = (props) => {
   const {reviews, offers, onClickCard} = props;
 
+  const activeOffer = offers[3];
+
   const {
+    id,
     title,
     type,
     rooms,
@@ -20,16 +24,17 @@ const OfferScreen = (props) => {
     maxGuests,
     inside,
     description
-  } = offers[3];
+  } = activeOffer;
 
   const {
     name,
     avatar
-  } = offers[3].owner;
-
-  const raitingPercent = raiting / 5 * 100;
+  } = activeOffer.owner;
 
   const offersNearby = offers.slice(0, 3);
+
+  const offersNearbyMap = offersNearby.concat(activeOffer);
+
 
   return (
     <div className="page">
@@ -65,7 +70,7 @@ const OfferScreen = (props) => {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{width: `${raitingPercent}%`}}></span>
+                  <span style={{width: `${raitingToPercent(raiting)}%`}}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="property__rating-value rating__value">{raiting}</span>
@@ -117,8 +122,9 @@ const OfferScreen = (props) => {
             </div>
           </div>
           <Map
-            offers={offersNearby}
+            offers={offersNearbyMap}
             className="property"
+            activeOffer={id}
           />
         </section>
         <div className="container">

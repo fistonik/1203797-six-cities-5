@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {raitingToPercent} from "../../utils";
 import {offersPropTypes} from "../../propTypes";
 
 const OfferCard = (props) => {
@@ -18,13 +19,11 @@ const OfferCard = (props) => {
 
   const classNameCard = `${className}__${className === `cities` ? `place-` : ``}card place-card`;
 
-  const raitingPercent = raiting / 5 * 100;
-
   return (
     <article
       className={classNameCard}
-      onMouseEnter={() => onHoverOffer(id)}
-      onMouseLeave={() => onHoverLeaveOffer()}
+      onMouseEnter={() => onHoverOffer && onHoverOffer(id)}
+      onMouseLeave={() => onHoverLeaveOffer && onHoverLeaveOffer()}
       onClick={() => onClickCard()}
     >
       {isPremium && (
@@ -52,7 +51,7 @@ const OfferCard = (props) => {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `${raitingPercent}%`}}></span>
+            <span style={{width: `${raitingToPercent(raiting)}%`}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
@@ -67,7 +66,7 @@ const OfferCard = (props) => {
 
 OfferCard.propTypes = {
   offer: PropTypes.shape(offersPropTypes).isRequired,
-  onHoverOffer: PropTypes.func.isRequired,
+  onHoverOffer: PropTypes.func,
   className: PropTypes.string.isRequired,
   onClickCard: PropTypes.func,
   onHoverLeaveOffer: PropTypes.func
